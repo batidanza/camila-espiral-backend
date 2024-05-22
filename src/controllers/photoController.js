@@ -1,6 +1,6 @@
 const db = require('../database/models');
 
-const getAllPhoto= async (req, res) => {
+const getAllPhoto = async (req, res) => {
     try {
 
       const allPhoto = await db.Photo.findAll();
