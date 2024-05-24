@@ -22,7 +22,11 @@ function collectionData(sequelize, DataTypes) {
         type: DataTypes.TEXT,
         allowNull: true,
       },
-      
+      Image: {
+        type: DataTypes.STRING, // Cambiar el tipo según tus necesidades
+        allowNull: true,
+      },
+
     };
   
     let collectionConfig = {
