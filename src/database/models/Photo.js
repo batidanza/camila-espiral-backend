@@ -14,6 +14,10 @@ function photoData(sequelize, DataTypes) {
       CollectionID: {
         type: DataTypes.INTEGER,
         allowNull: false,
+      },
+      Name: {
+        type: DataTypes.STRING,
+        allowNull: false,
       }
     };
   
