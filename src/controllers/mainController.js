@@ -1,7 +1,13 @@
-const photoControlller = require("./photoController");
-const collectionontrolller = require("./collectionController");
+const photoControlller = require("./collectionPhotoController");
+const collectionControlller = require("./collectionController");
+const archiveControlller = require("./archiveController");
+const archivePhotoControlller = require("./archivePhotoController");
+
+
 
 module.exports = {
   photoControlller,
-  collectionontrolller
+  collectionControlller,
+  archiveController,
+  archivePhotoController
 };
