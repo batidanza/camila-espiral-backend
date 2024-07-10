@@ -31,4 +31,6 @@ router.get("/byCollection/:collectionId", photoController.getPhotoByCollection);
 
 router.post("/upload", upload.array("Image"), photoController.uploadPhoto);
 
+router.put('/photos/swap', photoController.swapPhotoIds); 
+
 module.exports = router;
