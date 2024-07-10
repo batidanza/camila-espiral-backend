@@ -28,27 +28,36 @@ const getAllPhoto = async (req, res) => {
     }
   };
 
-
   const uploadPhoto = async (req, res) => {
     try {
       if (!req.files || req.files.length === 0) {
-        return res
-          .status(400)
-          .json({ error: "No se ha proporcionado ninguna imagen" });
+        return res.status(400).json({ error: "No se ha proporcionado ninguna imagen" });
       }
   
-      const { CollectionID, Name  } = req.body;
-      console.log("Request body:", req.body);
-
-      console.log("Name:", Name)
-  
+      const { CollectionID, Name } = req.body;
       const uploadedFiles = req.files;
+  
+      // Obtener el último valor de Position en la colección actual
+      const lastPhoto = await db.Photo.findOne({
+        where: { CollectionID },
+        order: [['Position', 'DESC']],
+      });
+  
+      let nextPosition = 1; // Valor predeterminado si no hay fotos aún
+  
+      if (lastPhoto) {
+        nextPosition = lastPhoto.Position + 1;
+      }
+  
+      // Mapear los archivos subidos con los datos necesarios
       const uploadedPhoto = uploadedFiles.map((file) => ({
         Image: file.path,
         CollectionID,
         Name,
+        Position: nextPosition,
       }));
   
+      // Crear las fotos en la base de datos
       const createdPhoto = await db.Photo.bulkCreate(uploadedPhoto);
   
       res.json({ message: "Medios creados exitosamente", photo: createdPhoto });
@@ -57,6 +66,7 @@ const getAllPhoto = async (req, res) => {
       res.status(500).json({ error: "Error al cargar los medios" });
     }
   };
+  
   
   const swapPhotoIds = async (req, res) => {
     const { firstPhotoId, secondPhotoId } = req.body;

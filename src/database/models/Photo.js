@@ -19,11 +19,11 @@ function photoData(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // Nueva propiedad position
+
     Position: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 0, // Valor por defecto si no se especifica uno
+      defaultValue: 0, 
     }
   };
 
