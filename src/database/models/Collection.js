@@ -26,7 +26,12 @@ function collectionData(sequelize, DataTypes) {
         type: DataTypes.STRING, // Cambiar el tipo según tus necesidades
         allowNull: true,
       },
-
+      
+      Position: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0, 
+      }
     };
   
     let collectionConfig = {

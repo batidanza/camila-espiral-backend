@@ -34,5 +34,7 @@ router.post("/create-collection", upload.array("Image"), collectionController.cr
 
 router.post("/create-ml", upload.array("Image"), collectionController.createMl);
 
+router.put('/collections/swap', collectionController.swapCollectionIds); 
+
 
 module.exports = router;
