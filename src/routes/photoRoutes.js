@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const photoController = require("../controllers/CollectionPhotoController");
+const photoController = require("../controllers/collectionPhotoController");
 
 const multer = require("multer");
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
