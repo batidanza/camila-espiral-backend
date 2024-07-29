@@ -12,17 +12,17 @@ const getArchivePhotos = async (req, res) => {
 
 const getPhotoByArchive = async (req, res) => {
   try {
-    const archiveId = req.params.archiveId;
-    const photo = await db.ArchivePhoto.findAll({
-      where: { ArchiveID: archiveId },
+    const archiveName = req.params.archiveName;  // Cambia el nombre del parámetro a archiveName
+    const photos = await db.ArchivePhoto.findAll({
+      where: { ArchiveName: archiveName },  // Cambia ArchiveID a ArchiveName
     });
-    res.json(photo);
+    res.json(photos);
   } catch (error) {
     console.error(
-      `Error obtaining photo photos for collection with ID ${req.params.photoId}:`,
+      `Error obtaining photos for archive with name ${req.params.archiveName}:`,
       error
     );
-    res.status(500).json({ error: "Error obtaining photo for collection" });
+    res.status(500).json({ error: "Error obtaining photos for archive" });
   }
 };
 

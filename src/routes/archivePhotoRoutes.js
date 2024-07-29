@@ -28,7 +28,7 @@ router.get("/archive-photos", archivePhotoController.getArchivePhotos);
 
 router.get("/archive-photos/:photoId", archivePhotoController.getArchivePhotoById);
 
-router.get("/byArchive/:archiveId", archivePhotoController.getPhotoByArchive);
+router.get("/byArchive/:archiveName", archivePhotoController.getPhotoByArchive);
 
 router.post("/create-archive-photo", upload.array("Image"), archivePhotoController.createArchivePhoto);
 
